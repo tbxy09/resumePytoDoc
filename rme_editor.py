@@ -103,8 +103,8 @@ def gen_table04(file_t4,file04_template,tr_li_history):
     lines = []
     file_history=[]
     [file_history.append(format_table_04(file04_template, history)) for history in tr_li_history]
+    itr = iter(file_history)
     for ix,line in enumerate(file_t4.split('\n')):
-        itr = iter(file_history)
         if '{tb}' in line:
             print(line)
             line = line.format_map(SafeDict(tb=next(itr)))
