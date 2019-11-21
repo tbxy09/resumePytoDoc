@@ -1,0 +1,65 @@
+ <table class=MsoTableGrid border=0 cellspacing=0 cellpadding=0 width="100%"
+                   style='width:100.0%;border-collapse:collapse;border:none;mso-yfti-tbllook:
+ 1184;mso-padding-alt:0cm 5.4pt 0cm 5.4pt;mso-border-insideh:none;mso-border-insidev:
+ none'>
+                <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>
+                    <td width="100%" colspan=2 valign=top style='width:100.0%;padding:0cm 5.4pt 0cm 5.4pt'>
+                        <p class=MsoNormal style='tab-stops:366.0pt'>
+                            <b style='mso-bidi-font-weight:
+  normal'>
+                                <span style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:
+  Calibri;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:宋体;
+  mso-fareast-theme-font:minor-fareast;mso-hansi-font-family:Calibri;
+  mso-hansi-theme-font:minor-latin'>{work_time}&nbsp;&nbsp;{work_company}</span>
+<span lang=EN-US style='font-size:9.0pt'><o:p></o:p></span>
+</b>
+</p>
+</td>
+</tr>
+<tr style='mso-yfti-irow:1'>
+    <td width="100%" colspan=2 valign=top style='width:100.0%;padding:0cm 5.4pt 0cm 5.4pt'>
+        <p class=MsoNormal style='tab-stops:366.0pt'>
+            <b style='mso-bidi-font-weight:
+  normal'>
+                <span style='font-size:9.0pt;font-family:宋体;mso-ascii-font-family:
+  Calibri;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:宋体;
+  mso-fareast-theme-font:minor-fareast;mso-hansi-font-family:Calibri;
+  mso-hansi-theme-font:minor-latin'>{work_title}</span>
+<span lang=EN-US style='font-size:9.0pt'><o:p></o:p></span>
+</b>
+</p>
+</td>
+</tr>
+<tr style='mso-yfti-irow:2'>
+    <td width="100%" colspan=2 valign=top style='width:100.0%;padding:0cm 5.4pt 0cm 5.4pt'>
+        <p class=MsoNormal style='tab-stops:366.0pt'>
+            <span style='font-size:9.0pt;
+  font-family:宋体;mso-ascii-font-family:Calibri;mso-ascii-theme-font:minor-latin;
+  mso-fareast-font-family:宋体;mso-fareast-theme-font:minor-fareast;mso-hansi-font-family:
+  Calibri;mso-hansi-theme-font:minor-latin'>{work_industry}</span>
+<span lang=EN-US style='font-size:9.0pt'><o:p></o:p></span>
+</p>
+</td>
+</tr>
+<tr style='mso-yfti-irow:3;mso-yfti-lastrow:yes'>
+    <td width="16%" valign=top style='width:16.94%;padding:0cm 5.4pt 0cm 5.4pt'>
+        <p class=MsoNormal style='tab-stops:366.0pt'>
+            <span style='font-size:9.0pt;
+  font-family:宋体;mso-ascii-font-family:Calibri;mso-ascii-theme-font:minor-latin;
+  mso-fareast-font-family:宋体;mso-fareast-theme-font:minor-fareast;mso-hansi-font-family:
+  Calibri;mso-hansi-theme-font:minor-latin'>工作描述：</span><span lang=EN-US
+                                                              style='font-size:9.0pt'><o:p></o:p></span>
+        </p>
+    </td>
+    <td width="83%" valign=top style='width:83.06%;padding:0cm 5.4pt 0cm 5.4pt'>
+        <p class=MsoNormal style='tab-stops:366.0pt'>
+            <span style='font-size:9.0pt;
+  font-family:宋体;mso-ascii-font-family:Calibri;mso-ascii-theme-font:minor-latin;
+  mso-fareast-font-family:宋体;mso-fareast-theme-font:minor-fareast;mso-hansi-font-family:
+  Calibri;mso-hansi-theme-font:minor-latin'>{work_description}
+</span>
+<span lang=EN-US style='font-size:9.0pt'><o:p></o:p></span>
+</p>
+</td>
+</tr>
+</table>
