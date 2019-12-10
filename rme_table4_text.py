@@ -37,7 +37,7 @@ tr_li_history.append({
 )
 tr_li_history.append({
 'work_time':
-        "2012.04.01-2015.04.01",
+        "2009.04.01-2015.04.01",
 'work_company':
         "摩托罗拉成都研发中心",
 'work_industry':
@@ -173,5 +173,98 @@ tr_li_proj.append({
     "滤波器参数重新tuning, 实现real-time on-board filter tuning, \
     省去每次firmware 重新的build和重新的flash, 在 debug mode 中通过脚本注入测试数据，\
     JTAG 连接仿真板后，脚本可以对filter参数做实时的修改和验证" ,\
+ }
+)
+tr_li_intro= []
+tr_li_intro.append(
+             "10 年的软件开发经验，拥有多个领域产品的开发项目经验，\
+            包括human body detection and tracking,motion capture/pose estimation and 3D virtual character animation，\
+            服装工业机器人的前沿领域研究，基于动作视频学习的强化模型开发，\
+            排料系统的智能化模型开发（强化方向），语音编解码/增强,语音通讯协议层开发，\
+            low-latence vocoder ，ARM/DSP/SoC,real-time on-device software development 。\
+            一直在信号处理领域进行探索和学习。在团队中扮演多个角色，可以是植根于代码，\
+            也可以lead team to achieve high standard goal of production,\
+            帮助business leader更好的理解机器学习开发落地的难点和痛点。")
+tr_li_intro=tr_li_intro + ['']*10
+
+tr_li_comp=[]
+
+tr_li_comp.append({
+
+'proj_name':
+        "天池大赛全球调度算法大赛-solo参赛（112/2116）",
+
+'proj_desp':
+        '这个调度问题是一个 4D bin-packing 问题，我的方案是无监督的强化学习的算法，因为它具备的以下三个条 \
+件。 1. Input where Policy network can build on 2. Action 3. Rewards reinforce learning 内在是个分类的问题，\
+是对每一幅图像进行 map 到 Action 的分类，而依据 machine id 的数量，这是个 huge multi classification（目标 \
+分类数目达到了 6000）有 15000 台的 app 应用需要部署，有 4 个维度的约束条件需要满足。 Platform 选取: \
+Pytorch， Pytorch 具有 dynamic graph 的 feature,对于模型建立中数据分析很方便。这是 tensorflow static graph \
+很不方便的一点 通过阿里云的 12 核 CPU 服务器实现',
+
+'proj_per':
+' gradient explode, 通过在每一层的 conv layer 后面增加 ReLu 解决 - gradient vanish 的问题（是因为过大的 \
+weight 的初始化让其中一个非线性的部件（Relu)得 backward 通路断了），即使我不断调小 weight 的 initialization,\
+对输入进行 BatchNormalization 操作，仍然最终还是 gradient vanish, - 解决方案 将 action 对应成 step,而不 \
+是 machine id 对 machine id 进行排序之后，step= the next choose id- right now id, 梯度消失的问题得到了解 \
+决。 - 解决 bug，Empty numpy Array Constructor 的操作，导致 internal memory leak,使得整个程序异常缓慢。 \
+- 基于多 cpu 并行 search,async search ,因为我的 model 并不很深，所以我选用的是多核 cpu 的硬件方案（基 \
+于经济的考虑角度） code 地址：https://github.com/tbxy09/tianchi_text_detection_dev_log 或者可以访问我的',
+
+ }
+)
+
+tr_li_comp.append({
+'proj_name':
+        "2018/07-2018/07 比赛项目的总结-金融算法挑战大赛上市公司季度营收预测-Solo 参赛(118/2724)",
+
+'proj_desp':
+        "这场比赛我用了外部的数据和自己的 domain knowledge，而且当时和调度的比赛有点冲突，只用了三天，最 \
+        主要的外部数据的使用是上市公司有没有进行收购和合并 ",
+
+
+'proj_per':
+        "Feature engineering,特征工程 Feature preprocessing 特征的预处理， Hyper Parameter Tuning 超参数的调整 \
+        Ensemble 了两套模型",
+ }
+)
+
+tr_li_comp.append({
+'proj_name':
+        "2018/06-2018/06 比赛项目的总结-ICPR MTWI 2018 挑战赛二,网络图像文本检测",
+'proj_desp':
+        "图像文本检测，总共 20000 张，来自淘宝商家的图片数据 目标数据：是一个 box 框形的二维坐标，box 不一\
+        定是水平，是可以根据文本方向倾斜 实现平台：Pytorch",
+'proj_per':
+        " 1. 图像的预处理,主要是 Resize, 一开始加入了 Gray 的处理，但 Gray 处理后，Unet 的训练效果并不理想 2. 自 \
+        己写了一个基于 Pythoch ,Model Gradient 可视化的工具。主要通过 hook register 一个 log function 把 data \
+        dump 出来。 3. Box Regression 算法的实现，由于 box 方向是倾斜的，现有人脸识别的 box regression 不能完 \
+        全适用。重新调整现有box regression的算法 code 地址：\
+        https://github.com/tbxy09/tianchi_text_detection_dev_log 或者可以访问我的简历网站 https://oneyardline.cn ", \
+ }
+)
+tr_li_comp=tr_li_comp
+
+tr_li_hub = []
+tr_li_hub.append({
+'proj_name':
+        "2015/06-now Github 总结",
+'proj_desp':
+                  "https://github.com/tbxy09/mindmap2 javascript 实现的单向的知识图谱，通过 markup \
+                  的脚本语言绘制,后端是 \
+                  mongodb 是实现 - Copyme and Jump \
+                  https://github.com/tbxy09/moreIPython ipynb 的 \
+                  nbextension,它解决的 \
+                  问题主要是,在 notebook 的运行环境下以 pipeline 的方式写出来了很多 code \
+                  的基本单元，希望写进具体的代 码文件中，作为以后能使用的基本模块，于是我利用一个文件作为 ipython \
+                  与 IDE 之间的 clipboard,通过 \
+                  ipython magic command CLI 方式，和 IDE 共享。而我们在 IDE 里头浏览和查找定位到的 code \
+                  line,也和可以通过'copyme from',从 IDE 中获得 \
+                  https://github.com/tbxy09/pcloud \
+                  是一个集中管理阿里云和腾讯云（稍后加入华为云的）综合管理平台,包括调试各种平台的API \
+                  Request,React+Flask的框架做数据的可视化 \
+                  ",
+'proj_per':
+                  "na"
  }
 )
