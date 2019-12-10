@@ -1,7 +1,10 @@
 import collections
 import sys
 from rme_table4_text import tr_li_proj
+from rme_table4_text import tr_li_intro
 from rme_table4_text import tr_li_history
+from rme_table4_text import tr_li_comp
+from rme_table4_text import tr_li_hub
 
 table= collections.namedtuple(
     "compu", ["values", "indices", "dense_shape"])
@@ -23,6 +26,12 @@ with open('./rme_table04') as f:
 
 with open('./rme_table05') as f:
     file_t5 = f.read()
+
+with open('./rme_table07') as f:
+    file_t7 = f.read()
+
+with open('./rme_table08') as f:
+    file_t8 = f.read()
 
 with open('./rme_table_template.doc') as f:
     file_tb = f.read()
@@ -92,17 +101,15 @@ def format_table_04(file_tb,tr_li):
     ret = '\n'.join(lines)
     return ret
 
-tb_wd = '个人简历网站'
-tr_li= []
-tr_li.append(
-'www.oneyardline.cn')
-tr_li=tr_li + ['']*10
-# file_t6=format_table(file_tb,tb_wd, tr_li)
+tb_wd = '个人简介'
+file_t6=format_table(file_tb,tb_wd, tr_li_intro)
+
 
 def gen_table04(file_t4,file04_template,tr_li_history):
     lines = []
     file_history=[]
     [file_history.append(format_table_04(file04_template, history)) for history in tr_li_history]
+    file_history=file_history + ['']*10
     itr = iter(file_history)
     for ix,line in enumerate(file_t4.split('\n')):
         if '{tb}' in line:
@@ -115,7 +122,9 @@ def gen_table04(file_t4,file04_template,tr_li_history):
 # file_t1=format_table(file_t1, '{info}', tr_li)
 file_t4 = gen_table04(file_t4,file_tb04,tr_li_history)
 file_t5 = gen_table04(file_t5,file_tb05,tr_li_proj)
-file_tl=[file_t1,file_t2,file_t3,file_t4,file_t5]
+file_t7 = gen_table04(file_t7,file_tb05,tr_li_comp)
+file_t8 = gen_table04(file_t8,file_tb05,tr_li_hub)
+file_tl=[file_t1,file_t6,file_t3,file_t2,file_t4,file_t5,file_t7,file_t8]
 file_tl=file_tl+['']*10
 # print(file_tl[0])
 
