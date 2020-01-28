@@ -124,7 +124,8 @@ file_t4 = gen_table04(file_t4,file_tb04,tr_li_history)
 file_t5 = gen_table04(file_t5,file_tb05,tr_li_proj)
 file_t7 = gen_table04(file_t7,file_tb05,tr_li_comp)
 file_t8 = gen_table04(file_t8,file_tb05,tr_li_hub)
-file_tl=[file_t1,file_t6,file_t3,file_t2,file_t4,file_t5,file_t7,file_t8]
+# file_tl=[file_t1,file_t6,file_t3,file_t2,file_t4,file_t5,file_t7,file_t8]
+file_tl=[file_t1,file_t6,file_t3,file_t2,file_t4,file_t5,file_t7]
 file_tl=file_tl+['']*10
 # print(file_tl[0])
 

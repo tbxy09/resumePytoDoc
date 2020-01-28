@@ -65,10 +65,12 @@ tr_li_proj.append({
                    detection 方案研究;movement smooth and jitters remove", \
 'proj_per':
         "而遇到的挑战主要包含 在model design 方面； model-free/model-base 方案选择,深度信息的模糊性depth ambiguity \
-                   of image，dense rotation supervision data generation，location/rotation jitter problem，chest \
-                   turn specific movement accuracy ，在 Inference 方面；less dependency to the network \
-                   connection，video tracking/animation/clothing all run together in edge device，Inference \
-                   latency/performance tradeoff",
+        of image，camera 外参estimation(纠正camera俯视角度造成的3D节点估计的腿部弯曲),\
+        dense rotation supervision data generation，location/rotation \
+        防抖算法(jitter problem)，chest turn specific movement accuracy ，\
+        在 Inference 方面；less dependency to the network \
+        connection，video tracking/animation/clothing all run together in edge device，Inference \
+        latency/performance tradeoff",
  }
 )
 
@@ -118,21 +120,21 @@ tr_li_proj.append({
  }
 )
 
-tr_li_proj.append({
-'proj_name':
-        "手持对讲设备的低能耗/高兴性能的全频率scan实现",
-'proj_desp':
-        "嵌入式通讯最重要的优化目标之一：\
-        低耗能/高性能的连接方案。Scan 是其中最重要的优化环节。\
-        一个具有无线通讯接口的嵌入式设备（包括各种的医疗设备，语音通讯设备，工业控制设备）在开启scan 后，\
-        能明显的提高它网络的接入能力，但却同时带来能耗的显著提升，对历史扫描点进行特征提取，\
-        从而对未来频率点的预测，最终达到能耗的接近50%的优化", \
-'proj_per':
-        "原型实现和方案讨论工作，发现dsp的时延导致整个firmware hang,简化option和event 交互机制。\
-        满足严格的时间同步。2 Test case design, TEST DRIVEN DEVELOPMENT TDD实践。\
-        3. 多个产品线的feature test.performance test, regression test", \
- }
-)
+# tr_li_proj.append({
+# 'proj_name':
+#         "手持对讲设备的低能耗/高兴性能的全频率scan实现",
+# 'proj_desp':
+#         "嵌入式通讯最重要的优化目标之一：\
+#         低耗能/高性能的连接方案。Scan 是其中最重要的优化环节。\
+#         一个具有无线通讯接口的嵌入式设备（包括各种的医疗设备，语音通讯设备，工业控制设备）在开启scan 后，\
+#         能明显的提高它网络的接入能力，但却同时带来能耗的显著提升，对历史扫描点进行特征提取，\
+#         从而对未来频率点的预测，最终达到能耗的接近50%的优化", \
+# 'proj_per':
+#         "原型实现和方案讨论工作，发现dsp的时延导致整个firmware hang,简化option和event 交互机制。\
+#         满足严格的时间同步。2 Test case design, TEST DRIVEN DEVELOPMENT TDD实践。\
+#         3. 多个产品线的feature test.performance test, regression test", \
+#  }
+# )
 
 tr_li_proj.append({
 'proj_name':
@@ -195,23 +197,23 @@ tr_li_comp.append({
         "天池大赛全球调度算法大赛-solo参赛（112/2116）",
 
 'proj_desp':
-        '这个调度问题是一个 4D bin-packing 问题，我的方案是无监督的强化学习的算法，因为它具备的以下三个条 \
-件。 1. Input where Policy network can build on 2. Action 3. Rewards reinforce learning 内在是个分类的问题，\
-是对每一幅图像进行 map 到 Action 的分类，而依据 machine id 的数量，这是个 huge multi classification（目标 \
-分类数目达到了 6000）有 15000 台的 app 应用需要部署，有 4 个维度的约束条件需要满足。 Platform 选取: \
-Pytorch， Pytorch 具有 dynamic graph 的 feature,对于模型建立中数据分析很方便。这是 tensorflow static graph \
-很不方便的一点 通过阿里云的 12 核 CPU 服务器实现',
+        '这个调度问题是一个 bin-packing 问题，我的方案是强化学习，因为它具备的以下三个条 \
+件。 1. Input where Policy network can build on 2. Action 3. Rewards ,seqtoseq combination optimization的问题，\
+也属于动态规划问题的范畴,对于seq里面每一步来说, 是对每一幅图像进行 map 到 Action 的分类，\
+而依据 machine id 的数量，这是个 high dimension {state,action}问题 （action数目达到了 6000）有 15000 台的 app 应用需要部署，\
+有 4 个类别的约束条件需要满足。Platform 选取: Pytorch， Pytorch 具有 dynamic graph 的 feature, \
+对于模型建立中数据分析很方便 通过阿里云的 12 核 CPU 服务器实现',
 
 'proj_per':
 ' gradient explode, 通过在每一层的 conv layer 后面增加 ReLu 解决 - gradient vanish 的问题（是因为过大的 \
 weight 的初始化让其中一个非线性的部件（Relu)得 backward 通路断了），即使我不断调小 weight 的 initialization,\
-对输入进行 BatchNormalization 操作，仍然最终还是 gradient vanish, - 解决方案 将 action 对应成 step,而不 \
-是 machine id 对 machine id 进行排序之后，step= the next choose id- right now id, 梯度消失的问题得到了解 \
-决。 - 解决 bug，Empty numpy Array Constructor 的操作，导致 internal memory leak,使得整个程序异常缓慢。 \
-- 基于多 cpu 并行 search,async search ,因为我的 model 并不很深，所以我选用的是多核 cpu 的硬件方案（基 \
-于经济的考虑角度） code 地址：https://github.com/tbxy09/tianchi_text_detection_dev_log 或者可以访问我的',
-
- }
+对输入进行 BatchNormalization 操作，仍然最终还是 gradient vanish, - 解决方案 将 action 对应成 \
+step(这相当与对action space 进行了降维处理,因为转化成step之后,会更倾向于临近的machine,对state \
+space的explore并没有太大影响),machine id 进行排序之后，step= the next choose id- right now id,\
+梯度消失的问题得到了解决。\
+- 解决 bug，Empty Array Constructor 的操作，导致 internal memory leak,使得整个程序异常缓慢。 \
+- 基于多 cpu 并行 search,async search ,我选用的是多核 cpu 的硬件方案（基 \
+于经济的考虑角度） code 地址：https://github.com/tbxy09/tianchi_text_detection_dev_log' }
 )
 
 tr_li_comp.append({
@@ -236,11 +238,9 @@ tr_li_comp.append({
         "图像文本检测，总共 20000 张，来自淘宝商家的图片数据 目标数据：是一个 box 框形的二维坐标，box 不一\
         定是水平，是可以根据文本方向倾斜 实现平台：Pytorch",
 'proj_per':
-        " 1. 图像的预处理,主要是 Resize, 一开始加入了 Gray 的处理，但 Gray 处理后，Unet 的训练效果并不理想 2. 自 \
-        己写了一个基于 Pythoch ,Model Gradient 可视化的工具。主要通过 hook register 一个 log function 把 data \
-        dump 出来。 3. Box Regression 算法的实现，由于 box 方向是倾斜的，现有人脸识别的 box regression 不能完 \
-        全适用。重新调整现有box regression的算法 code 地址：\
-        https://github.com/tbxy09/tianchi_text_detection_dev_log 或者可以访问我的简历网站 https://oneyardline.cn ", \
+        " 1. 图像的预处理, 一开始加入了 Gray 的处理，但 Gray 处理后，Unet 的训练效果并不理想 \
+        2. Box Regression 算法的实现，由于 box 方向是倾斜的,需要基于state-of-the-art 算法作相应的改进 \
+        code 地址 https://github.com/tbxy09/tianchi_text_detection_dev_log"
  }
 )
 tr_li_comp=tr_li_comp
@@ -256,7 +256,7 @@ tr_li_hub.append({
                   https://github.com/tbxy09/moreIPython ipynb 的 \
                   nbextension,它解决的 \
                   问题主要是,在 notebook 的运行环境下以 pipeline 的方式写出来了很多 code \
-                  的基本单元，希望写进具体的代 码文件中，作为以后能使用的基本模块，于是我利用一个文件作为 ipython \
+                  的基本单元，希望写进具体的代码文件中，作为以后能使用的基本模块，于是我利用一个文件作为 ipython \
                   与 IDE 之间的 clipboard,通过 \
                   ipython magic command CLI 方式，和 IDE 共享。而我们在 IDE 里头浏览和查找定位到的 code \
                   line,也和可以通过'copyme from',从 IDE 中获得 \
