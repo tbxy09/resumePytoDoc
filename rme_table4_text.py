@@ -189,6 +189,33 @@ tr_li_intro.append(
             帮助business leader更好的理解机器学习开发落地的难点和痛点。")
 tr_li_intro=tr_li_intro + ['']*10
 
+tr_li_skill=[]
+
+tr_li_skill.append({
+
+'proj_name':
+        "天池大赛全球调度算法大赛-solo参赛（112/2116）",
+
+'proj_desp':
+        '这个调度问题是一个 bin-packing 问题，我的方案是强化学习，因为它具备的以下三个条 \
+件。 1. Input where Policy network can build on 2. Action 3. Rewards ,seqtoseq combination optimization的问题，\
+也属于动态规划问题的范畴,对于seq里面每一步来说, 是对每一幅图像进行 map 到 Action 的分类，\
+而依据 machine id 的数量，这是个 high dimension {state,action}问题 （action数目达到了 6000）有 15000 台的 app 应用需要部署，\
+有 4 个类别的约束条件需要满足。Platform 选取: Pytorch， Pytorch 具有 dynamic graph 的 feature, \
+对于模型建立中数据分析很方便 通过阿里云的 12 核 CPU 服务器实现',
+
+'proj_per':
+' gradient explode, 通过在每一层的 conv layer 后面增加 ReLu 解决 - gradient vanish 的问题（是因为过大的 \
+weight 的初始化让其中一个非线性的部件（Relu)得 backward 通路断了），即使我不断调小 weight 的 initialization,\
+对输入进行 BatchNormalization 操作，仍然最终还是 gradient vanish, - 解决方案 将 action 对应成 \
+step(这相当与对action space 进行了降维处理,因为转化成step之后,会更倾向于临近的machine,对state \
+space的explore并没有太大影响),machine id 进行排序之后，step= the next choose id- right now id,\
+梯度消失的问题得到了解决。\
+- 解决 bug，Empty Array Constructor 的操作，导致 internal memory leak,使得整个程序异常缓慢。 \
+- 基于多 cpu 并行 search,async search ,我选用的是多核 cpu 的硬件方案（基 \
+于经济的考虑角度） code 地址：https://github.com/tbxy09/tianchi_text_detection_dev_log' }
+)
+
 tr_li_comp=[]
 
 tr_li_comp.append({
@@ -243,7 +270,6 @@ tr_li_comp.append({
         code 地址 https://github.com/tbxy09/tianchi_text_detection_dev_log"
  }
 )
-tr_li_comp=tr_li_comp
 
 tr_li_hub = []
 tr_li_hub.append({

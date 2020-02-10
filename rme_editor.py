@@ -120,12 +120,17 @@ def gen_table04(file_t4,file04_template,tr_li_history):
     return ret
 
 # file_t1=format_table(file_t1, '{info}', tr_li)
-file_t4 = gen_table04(file_t4,file_tb04,tr_li_history)
-file_t5 = gen_table04(file_t5,file_tb05,tr_li_proj)
-file_t7 = gen_table04(file_t7,file_tb05,tr_li_comp)
-file_t8 = gen_table04(file_t8,file_tb05,tr_li_hub)
-# file_tl=[file_t1,file_t6,file_t3,file_t2,file_t4,file_t5,file_t7,file_t8]
-file_tl=[file_t1,file_t6,file_t3,file_t2,file_t4,file_t5,file_t7]
+file_this = gen_table04(file_this,file_tb04,tr_li_history)
+file_tproj = gen_table04(file_tproj,file_tb05,tr_li_proj)
+file_tcomp = gen_table04(file_tcomp,file_tb05,tr_li_comp)
+file_tskl = gen_table04(file_tskl,file_tb05,tr_li_skill)
+file_thub = gen_table04(file_thub,file_tb05,tr_li_hub)
+
+file_tl = [file_t1,file_t6,file_t3,file_t2]
+
+file_t1 += [file_this,file_tskl,file_tproj,file_tcomp]
+
+
 file_tl=file_tl+['']*10
 # print(file_tl[0])
 
